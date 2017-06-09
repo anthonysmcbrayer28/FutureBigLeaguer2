@@ -3,12 +3,13 @@ package com.jrsdevelopers.futurebigleaguer;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
-import static android.R.id.message;
+import butterknife.BindView;
+
 import static com.jrsdevelopers.futurebigleaguer.R.id.hits;
 
 public class MainActivity extends Activity {
@@ -25,6 +26,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
     }
     public void makeCard (View view){

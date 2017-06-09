@@ -8,14 +8,22 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class CardActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE1 = "playerName";
     public static final String EXTRA_MESSAGE2 = "teamPosition";
     public static final Double ExTRA = Double.parseDouble("0.000");
     public static final int SELECT_PICTURE = 20;
+    @BindView(R.id.textView) TextView textView;
+    @BindView(R.id.textView2) TextView textView2;
+    @BindView(R.id.textView3) TextView textView3;
+    @BindView(R.id.pictureButton) Button photoButton;
+    @BindView(R.id.average) TextView average;
+
 
 
 
@@ -25,14 +33,12 @@ public class CardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_activity);
+        ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
         Bundle b = getIntent().getExtras();
         String message = bundle.getString(EXTRA_MESSAGE1);
         String message2 = bundle.getString(EXTRA_MESSAGE2);
         double message3 = b.getDouble(String.valueOf(ExTRA));
-        TextView textView = (TextView) findViewById(R.id.textView);
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        TextView textView3 = (TextView) findViewById(R.id.textView3);
         textView3.setText(String.format("%.3f", message3));
         textView.setText(message);
         textView2.setText(message2);
@@ -41,8 +47,8 @@ public class CardActivity extends AppCompatActivity {
     }
 
     public void addpicture(View view) {
-       
-        Button photoButton = (Button) this.findViewById(R.id.pictureButton);
+
+        ButterKnife.bind(this);
         photoButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -58,6 +64,7 @@ public class CardActivity extends AppCompatActivity {
 
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        ButterKnife.bind(this);
 
 
         if (resultCode == RESULT_OK) {
@@ -75,13 +82,12 @@ public class CardActivity extends AppCompatActivity {
                     System.out.println("selectedImagePath is the right one for you!");
                 else
                     System.out.println("filemanagerstring is the right one for you!");
-                TextView textView = (TextView) findViewById(R.id.textView);
-                TextView textView2 = (TextView) findViewById(R.id.textView2);
-                TextView avrage = (TextView) findViewById(R.id.average);
-                TextView textView3 = (TextView) findViewById(R.id.textView3);
+
+
+
                 String one = textView.getText().toString();
                 String two = textView2.getText().toString();
-                String three = avrage.getText().toString();
+                String three = average.getText().toString();
                 String four = textView3.getText().toString();
                 String card = makeCard(one, two, three, four);
 
@@ -94,8 +100,9 @@ public class CardActivity extends AppCompatActivity {
 
 
                 shareIntent.putExtra(Intent.EXTRA_STREAM, selectedImageUri);
+
                 shareIntent.setType("image/*");
-                startActivity(Intent.createChooser(shareIntent, "Share image via:"));
+                startActivity(Intent.createChooser(shareIntent, "Share image via Facebook:"));
             }
         }
     }
@@ -114,9 +121,10 @@ public class CardActivity extends AppCompatActivity {
     }
 
     private String makeCard(String one, String two, String three, String four) {
-        String card = one + "\n" + two + "\n" + three + four;
+        String card = one + "\n" + two + "\n" + three + " " + four;
         return card;
 
 
     }
+
 }
