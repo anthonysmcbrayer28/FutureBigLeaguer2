@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="number of at bats "
+                    android:text= "@string/at_bats"
                     android:textSize="26dp" />
 
                 <EditText
@@ -51,7 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="0"
+                    android:hint="@string/number"
                     android:inputType="number"
                     android:padding="10dp"
                     android:textSize="26dp" />
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:padding="10dp"
-                    android:text="number of hits"
+                    android:text="@string/hits"
                     android:textSize="26dp" />
 
                 <EditText
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="0"
+                    android:hint="@string/number"
                     android:inputType="number"
                     android:padding="10dp"
                     android:textSize="26dp" />
@@ -104,7 +104,7 @@
                     android:layout_gravity="center"
                     android:padding="10dp"
                     android:onClick="makeCard"
-                    android:text="Create"
+                    android:text="@string/Create"
                     android:textSize="26dp" />
 
             </LinearLayout>

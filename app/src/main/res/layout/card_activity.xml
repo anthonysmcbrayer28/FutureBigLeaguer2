@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingTop="10dp"
-                    android:text="yea"
+                    android:text="@string/placeholder"
                     android:textColor="#000000"
                     android:textSize="20dp"
                     android:visibility="visible" />
@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingBottom="10dp"
-                    android:text="no"
+                    android:text="@string/placeholder"
                     android:textSize="20dp" />
 
                 <ImageView
@@ -61,7 +61,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:padding="10dp"
-                        android:text="Batting Average"
+                        android:text="@string/batting_average"
 
                         android:textSize="20dp" />
 
@@ -69,9 +69,10 @@
                         android:id="@+id/textView3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:padding="10dp"
-                        android:text="0.000"
+                        android:text="@string/number2"
                         android:textSize="20dp" />
 
                 </RelativeLayout>
@@ -84,7 +85,7 @@
                     android:layout_gravity="center"
                     android:onClick="addpicture"
                     android:padding="10dp"
-                    android:text="add Picture"
+                    android:text="@string/picture_add"
                     android:textSize="26dp" />
 
 

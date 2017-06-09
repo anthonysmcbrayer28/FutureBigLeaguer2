@@ -3,4 +3,12 @@
     <string name="hint">Enter Players Name</string>
     <string name="Team_hint">Enter Team Name</string>
     <string name="padding">10dp</string>
+    <string name="at_bats">number of at bats</string>
+    <string name="hits">number of hits</string>
+    <string name="number">0</string>
+    <string name="Create">Create</string>
+    <string name="placeholder">placehold</string>
+    <string name="batting_average">Batting Average</string>
+    <string name="picture_add">Add Picture</string>
+    <string name="number2">0.000</string>
 </resources>
