@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -18,6 +22,7 @@ public class CardActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE2 = "teamPosition";
     public static final Double ExTRA = Double.parseDouble("0.000");
     public static final int SELECT_PICTURE = 20;
+    private AdView mAdView;
     @BindView(R.id.textView) TextView textView;
     @BindView(R.id.textView2) TextView textView2;
     @BindView(R.id.textView3) TextView textView3;
@@ -33,6 +38,11 @@ public class CardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_activity);
+        MobileAds.initialize(getApplicationContext(),
+                "ca-app-pub-3940256099942544~3347511713");
+        mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
         Bundle b = getIntent().getExtras();

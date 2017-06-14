@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jrsdevelopers.futurebigleaguer">
 
-    <uses-permission android:name="com.jrsdevelopers.futurebigleaguer.provider.permission"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="com.jrsdevelopers.futurebigleaguer.provider.permission" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -29,6 +29,15 @@
         android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".CardActivity" />
 
+        <receiver android:name=".CardAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/card_app_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

@@ -11,4 +11,7 @@
     <string name="batting_average">Batting Average</string>
     <string name="picture_add">Add Picture</string>
     <string name="number2">0.000</string>
+    <string name="appwidget_text">Current big Leaguer</string>
+    <string name="add_widget">Add widget</string>
+    <string name="widget_button">check out to days best</string>
 </resources>
