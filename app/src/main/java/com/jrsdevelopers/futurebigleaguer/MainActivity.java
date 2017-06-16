@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,7 +12,11 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
+import static android.R.attr.name;
 import static com.jrsdevelopers.futurebigleaguer.R.id.hits;
 
 public class MainActivity extends Activity {
@@ -19,6 +24,9 @@ public class MainActivity extends Activity {
     public static final String EXTRA_MESSAGE2 = "teamPosition";
     public static final Double ExTRA = Double.parseDouble("0.000");
     private AdView mAdView;
+    private Tracker mTracker;
+
+
 
 
 
@@ -31,9 +39,13 @@ public class MainActivity extends Activity {
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        GoogleAnnlylicsApplication application =(GoogleAnnlylicsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
 
 
     }
+
 
     public void makeCard(View view) {
 
@@ -66,7 +78,18 @@ public class MainActivity extends Activity {
 
 
 
+
+
+
     }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        mTracker.setScreenName("Main Screen");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+    }
+
 
     }
 
