@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'FutureBigLeaguer'
             keyPassword 'honeybee28'
-            storeFile file("$rootDir/Key store.jks/")
+            storeFile file('C:/Users/antho_000/Downloads/FutureBigLeaguer2/Key store.jks')
             storePassword 'honeybee28'
         }
     }
@@ -18,9 +18,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
+
+            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -34,8 +37,8 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.google.android.gms:play-services-ads:10.2.4'
-    compile 'com.google.android.gms:play-services-analytics:10.2.4'
+    compile 'com.google.android.gms:play-services-ads:11.0.1'
+    compile 'com.google.android.gms:play-services-analytics:11.0.1'
     compile 'com.android.support:design:25.3.1'
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.google.firebase:firebase-database:11.0.1'

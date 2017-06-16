@@ -17,6 +17,7 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 import static android.R.attr.name;
+
 import static com.jrsdevelopers.futurebigleaguer.R.id.hits;
 
 public class MainActivity extends Activity {
@@ -57,7 +58,7 @@ public class MainActivity extends Activity {
         EditText editText3 = (EditText) findViewById(R.id.bats);
         EditText editText4 = (EditText) findViewById(hits);
         if (editText3.getText().length() == 0 || editText4.getText().length() == 0) {
-            Toast.makeText(getApplicationContext(),"entter hit and abats",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),R.string.message,Toast.LENGTH_LONG).show();
 
         } else {
             Double value1 = Double.parseDouble(editText3.getText().toString());
