@@ -2,12 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
-        config {
-            keyAlias 'FutureBigLeaguer'
-            keyPassword 'honeybee28'
-            storeFile file('C:/Users/antho_000/Downloads/FutureBigLeaguer2/Key store.jks')
-            storePassword 'honeybee28'
-        }
     }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -23,9 +17,9 @@ android {
     buildTypes {
         release {
 
-            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
         }
     }
 }
@@ -42,6 +36,9 @@ dependencies {
     compile 'com.android.support:design:25.3.1'
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.google.firebase:firebase-database:11.0.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
     testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 }
+
+
+apply plugin: 'com.google.gms.google-services'

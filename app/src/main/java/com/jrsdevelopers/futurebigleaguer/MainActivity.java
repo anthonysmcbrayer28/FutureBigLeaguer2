@@ -15,6 +15,8 @@ import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import static android.R.attr.name;
 
@@ -31,12 +33,18 @@ public class MainActivity extends Activity {
 
 
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         MobileAds.initialize(getApplicationContext(),
                 "ca-app-pub-3940256099942544~3347511713");
+
+
+
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
@@ -49,6 +57,7 @@ public class MainActivity extends Activity {
 
 
     public void makeCard(View view) {
+
 
 
         Intent startNewActivity = new Intent(this, CardActivity.class);
@@ -67,8 +76,19 @@ public class MainActivity extends Activity {
             calculatedValue = value2 / value1;
             b.putDouble(String.valueOf(ExTRA), calculatedValue);
 
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference();
+            String math = myRef.push().getKey();
+
+            myRef.child(math).setValue(String.valueOf(String.format("%.3f",calculatedValue)));
+
+
 
         }
+
+
+
+
         ContentValues values = new ContentValues();
         String message2 = editText2.getText().toString();
         String message = editText1.getText().toString();
@@ -90,6 +110,7 @@ public class MainActivity extends Activity {
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
     }
+
 
 
     }
