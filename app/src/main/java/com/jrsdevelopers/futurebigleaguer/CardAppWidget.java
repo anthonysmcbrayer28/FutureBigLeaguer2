@@ -20,8 +20,8 @@ public class CardAppWidget extends AppWidgetProvider {
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.card_app_widget);
         views.setTextViewText(R.id.appwidget_text, widgetText);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.mlb.com"));
-        PendingIntent myPIntent = PendingIntent.getActivities(context,1, new Intent[]{intent}, 0);
+        Intent intent = new Intent(context,DataActivity.class);
+        PendingIntent myPIntent = PendingIntent.getActivities(context,0, new Intent[]{intent}, 0);
         views.setOnClickPendingIntent(R.id.widget_button,myPIntent);
 
         // Instruct the widget manager to update the widget
