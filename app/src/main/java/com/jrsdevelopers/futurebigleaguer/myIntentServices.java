@@ -19,47 +19,16 @@ import java.util.ArrayList;
  */
 
 public class myIntentServices extends IntentService  {
-    DatabaseReference myDref;
-    ListView listView;
-    ArrayList<String> myList = new ArrayList<>();
-    public myIntentServices(String name) {
-        super(name);
+
+    public myIntentServices() {
+        super("MyIntentServices");
     }
+
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, myList);
-        listView.setAdapter(adapter);
-        myDref = FirebaseDatabase.getInstance().getReference();
-        myDref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                myList.add(dataSnapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                myList.remove(dataSnapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
 }
