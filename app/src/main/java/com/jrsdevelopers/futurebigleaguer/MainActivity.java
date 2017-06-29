@@ -4,21 +4,19 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.algolia.search.saas.Client;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import static android.R.attr.name;
 
 import static com.jrsdevelopers.futurebigleaguer.R.id.hits;
 
@@ -29,11 +27,7 @@ public class MainActivity extends Activity {
     private AdView mAdView;
     private Tracker mTracker;
 
-
-
-
-
-
+    Client client = new Client("com.jrsdevelopers.futurebigleaguer", "8d93c4631bf68d6b73f050114d8e9f15");
 
 
     @Override
@@ -44,12 +38,12 @@ public class MainActivity extends Activity {
                 "ca-app-pub-3940256099942544~3347511713");
 
 
-
         mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        GoogleAnnlylicsApplication application =(GoogleAnnlylicsApplication) getApplication();
+        GoogleAnnlylicsApplication application = (GoogleAnnlylicsApplication) getApplication();
         mTracker = application.getDefaultTracker();
+
 
 
 
@@ -59,7 +53,6 @@ public class MainActivity extends Activity {
     public void makeCard(View view) {
 
 
-
         Intent startNewActivity = new Intent(this, CardActivity.class);
         Bundle b = new Bundle();
         EditText editText1 = (EditText) findViewById(R.id.playerName);
@@ -67,7 +60,7 @@ public class MainActivity extends Activity {
         EditText editText3 = (EditText) findViewById(R.id.bats);
         EditText editText4 = (EditText) findViewById(hits);
         if (editText3.getText().length() == 0 || editText4.getText().length() == 0) {
-            Toast.makeText(getApplicationContext(),R.string.message,Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.message, Toast.LENGTH_LONG).show();
 
         } else {
             Double value1 = Double.parseDouble(editText3.getText().toString());
@@ -75,18 +68,16 @@ public class MainActivity extends Activity {
             Double calculatedValue;
             calculatedValue = value2 / value1;
             b.putDouble(String.valueOf(ExTRA), calculatedValue);
-
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef = database.getReference();
             String math = myRef.push().getKey();
 
             myRef.child(math).setValue(String.valueOf(String.format("%.3f",calculatedValue)));
+           ;
 
 
 
         }
-
-
 
 
         ContentValues values = new ContentValues();
@@ -98,13 +89,10 @@ public class MainActivity extends Activity {
         startActivity(startNewActivity);
 
 
-
-
-
-
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         mTracker.setScreenName("Main Screen");
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
@@ -112,8 +100,7 @@ public class MainActivity extends Activity {
     }
 
 
-
-    }
+}
 
 
 
