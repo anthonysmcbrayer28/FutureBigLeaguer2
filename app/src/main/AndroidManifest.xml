@@ -42,7 +42,6 @@
         </receiver>
 
         <activity android:name=".DataActivity"></activity>
-        <service android:name=".myIntentServices"></service>
 
 
     </application>

@@ -2,17 +2,24 @@ package com.jrsdevelopers.futurebigleaguer;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+
+import java.io.InputStream;
+import java.net.URL;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,22 +29,27 @@ public class CardActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE2 = "teamPosition";
     public static final Double ExTRA = Double.parseDouble("0.000");
     public static final int SELECT_PICTURE = 20;
+    Bitmap bit;
     private AdView mAdView;
-    @BindView(R.id.textView) TextView textView;
-    @BindView(R.id.textView2) TextView textView2;
-    @BindView(R.id.textView3) TextView textView3;
-    @BindView(R.id.pictureButton) Button photoButton;
-    @BindView(R.id.average) TextView average;
-
-
-
-
+    @BindView(R.id.textView)
+    TextView textView;
+    @BindView(R.id.textView2)
+    TextView textView2;
+    @BindView(R.id.textView3)
+    TextView textView3;
+    @BindView(R.id.pictureButton)
+    Button photoButton;
+    @BindView(R.id.image1)
+    ImageView imageView;
+    @BindView(R.id.average)
+    TextView average;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_activity);
+        new myTask().execute();
         MobileAds.initialize(getApplicationContext(),
                 "ca-app-pub-3940256099942544~3347511713");
         mAdView = (AdView) findViewById(R.id.adView);
@@ -94,7 +106,6 @@ public class CardActivity extends AppCompatActivity {
                     System.out.println("filemanagerstring is the right one for you!");
 
 
-
                 String one = textView.getText().toString();
                 String two = textView2.getText().toString();
                 String three = average.getText().toString();
@@ -112,7 +123,7 @@ public class CardActivity extends AppCompatActivity {
                 shareIntent.putExtra(Intent.EXTRA_STREAM, selectedImageUri);
 
                 shareIntent.setType("image/*");
-                startActivity(Intent.createChooser(shareIntent, "Share image via Facebook:"));
+                startActivity(Intent.createChooser(shareIntent, "Share:"));
             }
         }
     }
@@ -137,4 +148,24 @@ public class CardActivity extends AppCompatActivity {
 
     }
 
+    public class myTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                bit = BitmapFactory.decodeStream((InputStream)new URL("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBAGw93V-06RNRRypyvpoETI7qZ43ZqZXiTMZyPr9Or2jxLGIa").getContent());
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute (Void avoid){
+            super.onPostExecute(avoid);
+            imageView.setImageBitmap(bit);
+        }
+
+
+    }
 }

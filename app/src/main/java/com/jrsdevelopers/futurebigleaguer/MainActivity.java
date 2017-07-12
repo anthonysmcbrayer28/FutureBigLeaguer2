@@ -3,6 +3,7 @@ package com.jrsdevelopers.futurebigleaguer;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -43,6 +44,9 @@ public class MainActivity extends Activity {
         mAdView.loadAd(adRequest);
         GoogleAnnlylicsApplication application = (GoogleAnnlylicsApplication) getApplication();
         mTracker = application.getDefaultTracker();
+
+
+
 
 
 
@@ -98,6 +102,7 @@ public class MainActivity extends Activity {
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
     }
+
 
 
 }
