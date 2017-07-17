@@ -1,0 +1,9 @@
+<component name="CopyrightManager">
+  <settings default="" />
+  repositories {
+  mavenCentral()
+  }
+  dependencies {
+  compile 'com.facebook.android:facebook-android-sdk:4.+'
+  }
+</component>

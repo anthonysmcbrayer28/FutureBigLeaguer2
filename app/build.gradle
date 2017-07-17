@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 
 android {
     signingConfigs {
+        config {
+            keyAlias 'releasekey'
+            keyPassword 'buddy123'
+            storeFile file("C:/Users/antho_000/Downloads/FutureBigLeaguer2/key0.jks")
+            storePassword 'honeybee28'
+        }
     }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -16,10 +22,10 @@ android {
     }
     buildTypes {
         release {
-
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             debuggable true
+            signingConfig signingConfigs.config
         }
     }
 }

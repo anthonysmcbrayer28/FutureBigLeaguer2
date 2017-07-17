@@ -49,7 +49,7 @@ public class CardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.card_activity);
-        new myTask().execute();
+        new MyTask().execute();
         MobileAds.initialize(getApplicationContext(),
                 "ca-app-pub-3940256099942544~3347511713");
         mAdView = (AdView) findViewById(R.id.adView);
@@ -148,7 +148,7 @@ public class CardActivity extends AppCompatActivity {
 
     }
 
-    public class myTask extends AsyncTask<Void, Void, Void> {
+    public class MyTask extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected Void doInBackground(Void... voids) {
