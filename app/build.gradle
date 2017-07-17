@@ -3,9 +3,9 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'releasekey'
+            keyAlias 'key0'
             keyPassword 'buddy123'
-            storeFile file("C:/Users/antho_000/Downloads/FutureBigLeaguer2/key0.jks")
+            storeFile file("$rootDir/key0.jks")
             storePassword 'honeybee28'
         }
     }
